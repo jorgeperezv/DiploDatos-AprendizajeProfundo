@@ -69,51 +69,51 @@ class MLPClassifier(nn.Module):
         return x
 
     
-    class CNNClassifier(nn.Module):
-        def __init__(self, 
-                     pretrained_embeddings_path, 
-                     token_to_index,
-                     n_labels,
-                     vector_size,
-                     freeze_embedings,
-                     filter_count,
-                     filters_lenght):
-            super().__init__()
-            with gzip.open(token_to_index, "rt") as fh:
-                token_to_index = json.load(fh)
-            embeddings_matrix = torch.randn(len(token_to_index), vector_size)
-            embeddings_matrix[0] = torch.zeros(vector_size)
-            with gzip.open(pretrained_embeddings_path, "rt") as fh:
-                next(fh)
-                for line in fh:
-                    word, vector = line.strip().split(None, 1)
-                    if word in token_to_index:
-                        embeddings_matrix[token_to_index[word]] =\
-                            torch.FloatTensor([float(n) for n in vector.split()])
-            self.embeddings = nn.Embedding.from_pretrained(embeddings_matrix,
-                                                           freeze=freeze_embedings,
-                                                           padding_idx=0)
-            self.convs = []
-            for filter_lenght in filters_lenght:
-                self.convs.append(
-                    nn.Conv1d(vector_size, filter_count, filter_lenght)
-                )
-            self.convs = nn.ModuleList(self.convs)
-            self.fc = nn.Linear(filter_count * len(filters_lenght), 128)
-            self.output = nn.Linear(128, n_labels)
-            self.vector_size = vector_size
-        
-        @staticmethod
-        def conv_global_max_pool(x, conv):
-            return F.relu(conv(x).transpose(1, 2).max(1)[0])
-        
-        def forward(self, x):
-            x = self.embeddings(x).transpose(1, 2)  # Conv1d takes (batch, channel, seq_len)
-            x = [self.conv_global_max_pool(x, conv) for conv in self.convs]
-            x = torch.cat(x, dim=1)
-            x = F.relu(self.fc(x))
-            x = torch.sigmoid(self.output(x))
-            return x
+class CNNClassifier(nn.Module):
+    def __init__(self, 
+                 pretrained_embeddings_path, 
+                 token_to_index,
+                 n_labels,
+                 vector_size,
+                 freeze_embedings,
+                 filter_count,
+                 filters_lenght):
+        super().__init__()
+        with gzip.open(token_to_index, "rt") as fh:
+            token_to_index = json.load(fh)
+        embeddings_matrix = torch.randn(len(token_to_index), vector_size)
+        embeddings_matrix[0] = torch.zeros(vector_size)
+        with gzip.open(pretrained_embeddings_path, "rt") as fh:
+            next(fh)
+            for line in fh:
+                word, vector = line.strip().split(None, 1)
+                if word in token_to_index:
+                    embeddings_matrix[token_to_index[word]] =\
+                        torch.FloatTensor([float(n) for n in vector.split()])
+        self.embeddings = nn.Embedding.from_pretrained(embeddings_matrix,
+                                                       freeze=freeze_embedings,
+                                                       padding_idx=0)
+        self.convs = []
+        for filter_lenght in filters_lenght:
+            self.convs.append(
+                nn.Conv1d(vector_size, filter_count, filter_lenght)
+            )
+        self.convs = nn.ModuleList(self.convs)
+        self.fc = nn.Linear(filter_count * len(filters_lenght), 128)
+        self.output = nn.Linear(128, n_labels)
+        self.vector_size = vector_size
+
+    @staticmethod
+    def conv_global_max_pool(x, conv):
+        return F.relu(conv(x).transpose(1, 2).max(1)[0])
+
+    def forward(self, x):
+        x = self.embeddings(x).transpose(1, 2)  # Conv1d takes (batch, channel, seq_len)
+        x = [self.conv_global_max_pool(x, conv) for conv in self.convs]
+        x = torch.cat(x, dim=1)
+        x = F.relu(self.fc(x))
+        x = torch.sigmoid(self.output(x))
+        return x
 
 
 if __name__ == "__main__":
@@ -133,7 +133,7 @@ if __name__ == "__main__":
     parser.add_argument("--model",
                         help="Select between Multilayer-Perceptron and Convolutional-Neural-Networks",
                         default= "Multilayer-Perceptron",
-                        type=string)
+                        type=str)
     parser.add_argument("--filters_count",
                         default=100,
                         help="Number of filters",
@@ -251,12 +251,12 @@ if __name__ == "__main__":
         elif args.model == "Convolutional-Neural-Networks":
         
             model = CNNClassifier(
-            pretrained_embeddings_path=args.pretrained_embeddings,, 
+            pretrained_embeddings_path=args.pretrained_embeddings,
             token_to_index=args.token_to_index,
             n_labels=train_dataset.n_labels,
             vector_size=args.embeddings_size,
             freeze_embedings=True,
-            filter_count=args.filter_count,
+            filter_count=args.filters_count,
             filters_lenght=args.filters_lenght
             )
         
