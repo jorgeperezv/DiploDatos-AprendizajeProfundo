@@ -1,0 +1,15 @@
+artifact_uri: file:///users/evalverdi/DiploDatos-AprendizajeProfundo/mlruns/1/d4ddf6ebfb33443299b36a397a6a9a66/artifacts
+end_time: 1616344778014
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: d4ddf6ebfb33443299b36a397a6a9a66
+run_uuid: d4ddf6ebfb33443299b36a397a6a9a66
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1616342620133
+status: 3
+tags: []
+user_id: evalverdi
