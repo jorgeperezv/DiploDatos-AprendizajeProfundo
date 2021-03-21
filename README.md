@@ -13,6 +13,12 @@ En primera instancia, comenzamos realizando pruebas con dos tipos de redes neuro
 
 ## Resultados experimentos modelo MLP
 
+El modelo utilizado, se configuro con las siguientes capas:
+
+*hidden_layers = [512, 256, 256, 128]*
+
+*epochs = 5*
+
 Se probaron alterar los siguientes parametros:
 
 * Dropuot: 0.3 y 0.7
