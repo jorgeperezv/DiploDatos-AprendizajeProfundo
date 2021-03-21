@@ -1,0 +1,15 @@
+artifact_uri: file:///users/jepvillella/github/DiploDatos-AprendizajeProfundo/mlruns/1/864a66c858e34c438dc8e244d7fcf211/artifacts
+end_time: 1616334104078
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: 864a66c858e34c438dc8e244d7fcf211
+run_uuid: 864a66c858e34c438dc8e244d7fcf211
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1616332998732
+status: 3
+tags: []
+user_id: jepvillella
