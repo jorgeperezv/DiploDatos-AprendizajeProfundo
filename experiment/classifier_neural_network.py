@@ -112,7 +112,8 @@ class CNNClassifier(nn.Module):
         x = [self.conv_global_max_pool(x, conv) for conv in self.convs]
         x = torch.cat(x, dim=1)
         x = F.relu(self.fc(x))
-        x = torch.sigmoid(self.output(x))
+#        x = torch.sigmoid(self.output(x))
+        x = self.output(x)
         return x
 
 
