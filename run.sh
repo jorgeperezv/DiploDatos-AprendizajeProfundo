@@ -29,9 +29,9 @@ python -m experiment.classifier_neural_network \
     --language spanish \
     --model Convolutional-Neural-Networks \
     --filters_count 200 \
-    --filters_lenght 100 200 500 \
+    --filters_lenght 4 6 7 \
     --validation-data ./data/meli-challenge-2019/spanish.validation.jsonl.gz \
     --embeddings-size 300 \
-    --hidden-layers 512 512 256 \
+    --hidden-layers 512 512 256 128 \
     --dropout 0.3 \
-    --epochs 10
+    --epochs 5
