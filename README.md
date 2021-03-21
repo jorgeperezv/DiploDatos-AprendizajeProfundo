@@ -7,3 +7,11 @@ Materia optativa "Aprendizaje Profundo" (Deep Learning) de la Diplomatura en Cie
      alt="Experimentos MLP"
      style="float: center; margin-right: 10px;"
 />
+
+
+## Resultados experimentos modelo CNN
+
+<img src="images/CNN-MLflow.png"
+     alt="Experimentos CNN"
+     style="float: center; margin-right: 10px;"
+/>
