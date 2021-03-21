@@ -1,4 +1,5 @@
-artifact_location: file:///users/evalverdi/DiploDatos-AprendizajeProfundo/mlruns/1
-experiment_id: '1'
+artifact_location: file:///users/evalverdi/DiploDatos-AprendizajeProfundo/mlruns/4
+experiment_id: '4'
 lifecycle_stage: active
-name: diplodatos.spanish
+name: diplodatos_spanish
+tags: {}
