@@ -1,4 +1,5 @@
 artifact_location: file:///users/jepvillella/github/DiploDatos-AprendizajeProfundo/mlruns/2
 experiment_id: '2'
 lifecycle_stage: active
-name: Práctico CNN
+name: Práctico CNN Notebook
+tags: {}
