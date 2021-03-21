@@ -2,7 +2,7 @@ artifact_uri: file:///users/jepvillella/github/DiploDatos-AprendizajeProfundo/ml
 end_time: 1616198267326
 entry_point_name: ''
 experiment_id: '1'
-lifecycle_stage: active
+lifecycle_stage: deleted
 name: ''
 run_id: 0cebc9e3c85c4034bbd9fd79ac1bc30e
 run_uuid: 0cebc9e3c85c4034bbd9fd79ac1bc30e
