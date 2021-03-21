@@ -17,6 +17,8 @@ El modelo utilizado, se configuro con las siguientes capas:
 
 *hidden_layers = [512, 256, 256, 128]*
 
+Cantidad de epocas para entrenamiento:
+
 *epochs = 5*
 
 Se probaron alterar los siguientes parametros:
