@@ -25,7 +25,10 @@ Se probaron alterar los siguientes parametros:
 />
 
 Al poner en *False* el freeze embedings, obtenemos muchos mejores resultados que utilizando los mismos parámetros y seteandolo en *True*. Esto nos generó la duda, de que al realizar esta modificación estemos ante un caso de overfitting.
-Con respecto al parametro dropout, verificamos que se obtienen mejores resultados cuando el es mas pequeño (0.3).
+
+Con respecto al parametro dropout, verificamos que se obtienen mejores resultados cuando el valor es mas pequeño (0.3).
+
+Por último, con un batch size de 256, obtenemos mejores resultados que uno de 128. Llegando a la conclusión, de que con batch size en 256 y dropout en 0.3, obtenemos el mejor resultado dejando del lado el parametro freeze embeding.
 
 ## Resultados experimentos modelo CNN
 
