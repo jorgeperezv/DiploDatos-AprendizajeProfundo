@@ -40,6 +40,26 @@ Por último, con un batch size de 256, obtenemos mejores resultados que uno de 1
 
 ## Resultados experimentos modelo CNN
 
+En el caso de la red neuronal CNN, se intento modificar la cantidad de capas que utiliza el modelo, se empezo por la version standar de dos capaz y se noto una mejora cuando se agregaron 2 capas, obteniendo la mejor version al realizar la siguiente combinacion:
+
+*hidden_layers = [512, 512, 256, 128]*
+
+Por otro lado, se intento mejorar la performance del modelo al aumentar las epocas de entrenamiento, alternando entre 3, 5 y 10 (Nos vemos restringidos por el tiempo de ejecución).
+
+Por ultimo, se intento jugar con los parametros:
+
+* Filter Count
+* Filter Lenght
+
+En este caso, se comenzo con la version inicial, donde el *filter count* en 100 y *filter lenght* en [2, 3, 4], pero en este caso los resultados no fueron buenos. Luego de intentar algunas opciones, llegamos a encontrar una que brindaba un resultado aceptable con los siguientes valores:
+
+*Filter Count: 200*
+
+*Filter Lenght: [4, 6, 7]*
+
+Para finalizar, despues de realizar experimentos y no lograr buenos resultados, nos dimos cuenta que habiamos implementado de forma incorrecta el modelo de CNN, ya que incluiamos la funcion Sigmoide, lo que nos llevo a creer que podia ser la causa de la baja performance. Al modificar dicho "error", logramos la mejora de los resultados que se pueden observar en la imagen.
+
+
 <img src="images/CNN-MLflow.png"
      alt="Experimentos CNN"
      style="float: center; margin-right: 10px;"
